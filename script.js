@@ -50,9 +50,117 @@ window.addEventListener('scroll', () => {
 window.addEventListener('load', () => {
     updateNavbar();
     revealOnScroll();
+    initCertificateSlider();
     setTimeout(() => loadingScreen.classList.add('hidden'), 700);
     typeLoop();
 });
+
+const initCertificateSlider = () => {
+    const slider = document.querySelector('#certificates .slider');
+    if (!slider) return;
+
+    const items = Array.from(slider.querySelectorAll('.item'));
+    const prevBtn = document.getElementById('certPrevBtn');
+    const nextBtn = document.getElementById('certNextBtn');
+    const dots = document.querySelectorAll('#certDots .dot');
+    
+    let currentIndex = 0;
+    const total = items.length;
+
+    const updateSlider = () => {
+        items.forEach((item, index) => {
+            // Compute position relative to current active index
+            const offset = (index - currentIndex + total) % total;
+            
+            if (offset === 0) {
+                // Front active card
+                item.style.transform = 'translate3d(0, 0px, 0px) scale(1)';
+                item.style.opacity = '1';
+                item.style.zIndex = '5';
+                item.style.pointerEvents = 'auto';
+                item.classList.add('active-item');
+            } else if (offset === 1) {
+                // 2nd card in 3D stack
+                item.style.transform = 'translate3d(0, 22px, -35px) scale(0.93)';
+                item.style.opacity = '0.85';
+                item.style.zIndex = '4';
+                item.style.pointerEvents = 'auto';
+                item.classList.remove('active-item');
+            } else if (offset === 2) {
+                // 3rd card in 3D stack
+                item.style.transform = 'translate3d(0, 44px, -70px) scale(0.86)';
+                item.style.opacity = '0.65';
+                item.style.zIndex = '3';
+                item.style.pointerEvents = 'auto';
+                item.classList.remove('active-item');
+            } else if (offset === 3) {
+                // 4th card in 3D stack
+                item.style.transform = 'translate3d(0, 66px, -105px) scale(0.79)';
+                item.style.opacity = '0.45';
+                item.style.zIndex = '2';
+                item.style.pointerEvents = 'none';
+                item.classList.remove('active-item');
+            } else {
+                // 5th card in 3D stack
+                item.style.transform = 'translate3d(0, 88px, -140px) scale(0.72)';
+                item.style.opacity = '0.2';
+                item.style.zIndex = '1';
+                item.style.pointerEvents = 'none';
+                item.classList.remove('active-item');
+            }
+        });
+
+        dots.forEach((dot, idx) => {
+            dot.classList.toggle('active', idx === currentIndex);
+        });
+    };
+
+    const nextSlide = () => {
+        currentIndex = (currentIndex + 1) % total;
+        updateSlider();
+    };
+
+    const prevSlide = () => {
+        currentIndex = (currentIndex - 1 + total) % total;
+        updateSlider();
+    };
+
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+    dots.forEach((dot, idx) => {
+        dot.addEventListener('click', () => {
+            currentIndex = idx;
+            updateSlider();
+        });
+    });
+
+    items.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            if (currentIndex !== index) {
+                currentIndex = index;
+                updateSlider();
+            }
+        });
+    });
+
+    // Touch gesture support
+    let startX = 0;
+    slider.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+        const endX = e.changedTouches[0].clientX;
+        if (startX - endX > 40) {
+            nextSlide();
+        } else if (endX - startX > 40) {
+            prevSlide();
+        }
+    }, { passive: true });
+
+    updateSlider();
+};
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -63,3 +171,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+

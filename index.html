@@ -47,7 +47,7 @@
                     <p>I’m a Computer Science student specializing in AI/ML, building thoughtful digital products at the intersection of machine learning and multimedia systems.</p>
                     <div class="hero-btns">
                         <a href="#projects" class="btn btn-primary">Explore Projects</a>
-                        <a href="resume.pdf" class="btn" download>View Resume</a>
+                        <a href="resume.html" target="_blank" rel="noopener noreferrer" class="btn">View Resume</a>
                     </div>
                     <div class="social-row">
                         <a href="https://github.com" target="_blank" rel="noreferrer" class="social-pill">GitHub</a>
@@ -159,21 +159,107 @@
         <section id="certificates">
             <div class="container">
                 <div class="section-header reveal">
-                    <h2>Certificates <span class="gradient-text">& Learning</span></h2>
+                    <h2>Certificates <span class="gradient-text">& Credentials</span></h2>
                     <div class="underline"></div>
                 </div>
-                <div class="grid">
-                    <div class="glass card reveal">
-                        <h3>Machine Learning Foundations</h3>
-                        <p>Completed a foundational course covering model design, evaluation, and practical workflows.</p>
+                
+                <div class="slider-wrapper reveal">
+                    <div class="slider">
+                        <div class="item item-5 glass card" data-index="4">
+                            <div class="cert-card-content">
+                                <div class="cert-header">
+                                    <span class="cert-badge">05</span>
+                                    <span class="cert-tag">Deep Learning</span>
+                                </div>
+                                <h3>Neural Networks & Deep Learning</h3>
+                                <p class="cert-issuer">DeepLearning.AI • Coursera</p>
+                                <p class="cert-desc">Mastered deep neural network architectures, hyperparameter tuning, CNNs, and Sequence Models.</p>
+                                <div class="cert-footer">
+                                    <span class="cert-year">2024</span>
+                                    <a href="#" class="cert-link" onclick="event.preventDefault();">Verify Credential ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item item-4 glass card" data-index="3">
+                            <div class="cert-card-content">
+                                <div class="cert-header">
+                                    <span class="cert-badge">04</span>
+                                    <span class="cert-tag">Video Engineering</span>
+                                </div>
+                                <h3>Video Processing & Compression</h3>
+                                <p class="cert-issuer">Media Systems Institute</p>
+                                <p class="cert-desc">Advanced study in H.264/HEVC/AV1 codecs, motion estimation, bitrate control, and streaming pipelines.</p>
+                                <div class="cert-footer">
+                                    <span class="cert-year">2024</span>
+                                    <a href="#" class="cert-link" onclick="event.preventDefault();">Verify Credential ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item item-3 glass card" data-index="2">
+                            <div class="cert-card-content">
+                                <div class="cert-header">
+                                    <span class="cert-badge">03</span>
+                                    <span class="cert-tag">Web Architecture</span>
+                                </div>
+                                <h3>Advanced Web Systems & Design</h3>
+                                <p class="cert-issuer">Meta Front-End Specialization</p>
+                                <p class="cert-desc">Focused on modern web applications, high performance rendering, dynamic layouts, and responsive UI systems.</p>
+                                <div class="cert-footer">
+                                    <span class="cert-year">2023</span>
+                                    <a href="#" class="cert-link" onclick="event.preventDefault();">Verify Credential ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item item-2 glass card" data-index="1">
+                            <div class="cert-card-content">
+                                <div class="cert-header">
+                                    <span class="cert-badge">02</span>
+                                    <span class="cert-tag">Artificial Intelligence</span>
+                                </div>
+                                <h3>AI for Everyone & Systems</h3>
+                                <p class="cert-issuer">Stanford Online</p>
+                                <p class="cert-desc">Foundational principles of AI project workflows, model evaluation, dataset engineering, and ethical AI deployment.</p>
+                                <div class="cert-footer">
+                                    <span class="cert-year">2023</span>
+                                    <a href="#" class="cert-link" onclick="event.preventDefault();">Verify Credential ↗</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item item-1 glass card" data-index="0">
+                            <div class="cert-card-content">
+                                <div class="cert-header">
+                                    <span class="cert-badge">01</span>
+                                    <span class="cert-tag">Machine Learning</span>
+                                </div>
+                                <h3>Machine Learning Foundations</h3>
+                                <p class="cert-issuer">Google Cloud / Coursera</p>
+                                <p class="cert-desc">Comprehensive certification in statistical machine learning algorithms, model evaluation, and predictive pipelines.</p>
+                                <div class="cert-footer">
+                                    <span class="cert-year">2023</span>
+                                    <a href="#" class="cert-link" onclick="event.preventDefault();">Verify Credential ↗</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="glass card reveal">
-                        <h3>AI for Everyone</h3>
-                        <p>Built a stronger understanding of AI applications, business relevance, and responsible adoption.</p>
-                    </div>
-                    <div class="glass card reveal">
-                        <h3>Advanced Web Design</h3>
-                        <p>Focused on modern UI building, responsive design, and polished user experiences.</p>
+
+                    <div class="slider-controls">
+                        <button class="slider-arrow prev-btn" id="certPrevBtn" aria-label="Previous Certificate">
+                            ‹
+                        </button>
+                        <div class="slider-dots" id="certDots">
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
+                            <span class="dot" data-slide="3"></span>
+                            <span class="dot" data-slide="4"></span>
+                        </div>
+                        <button class="slider-arrow next-btn" id="certNextBtn" aria-label="Next Certificate">
+                            ›
+                        </button>
                     </div>
                 </div>
             </div>
@@ -183,11 +269,11 @@
             <div class="container">
                 <div class="glass card reveal resume-card">
                     <div class="section-header">
-                        <h2>Resume <span class="gradient-text">Download</span></h2>
+                        <h2>View <span class="gradient-text">Resume</span></h2>
                         <div class="underline"></div>
                     </div>
-                    <p>Download my resume to view my academic background, skills, and projects in one place.</p>
-                    <a href="resume.pdf" class="btn btn-primary" download>View Resume</a>
+                    <p>View my resume to see my academic background, skills, and projects in one place.</p>
+                    <a href="resume.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Resume</a>
                 </div>
             </div>
         </section>
