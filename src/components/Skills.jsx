@@ -24,12 +24,6 @@ function Skills() {
               </div>
             </div>
             <div className="skill-item">
-              <span>Video Coding</span>
-              <div className="bar">
-                <i style={{ width: '78%' }}></i>
-              </div>
-            </div>
-            <div className="skill-item">
               <span>Frontend</span>
               <div className="bar">
                 <i style={{ width: '88%' }}></i>

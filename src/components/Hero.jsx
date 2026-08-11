@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import profile from '../assets/profile.svg';
 
-const phrases = ['AI/ML Enthusiast', 'Video Coding Explorer', 'Frontend Builder'];
+const phrases = ['AI/ML Enthusiast', 'Frontend Builder'];
 
 function Hero() {
   const [displayText, setDisplayText] = useState('');
@@ -43,7 +43,7 @@ function Hero() {
     <section id="home" className="hero">
       <div className="container hero-grid">
         <div className="hero-content reveal" data-reveal>
-          <span className="hero-tag">AI/ML • Video Coding • Web Tech</span>
+          <span className="hero-tag">AI/ML • Web Tech</span>
           <h1>
             Hello, I’m Akash.
             <br />

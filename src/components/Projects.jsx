@@ -22,11 +22,6 @@ function Projects() {
             <h3>Stress Detection Model</h3>
             <p>A prototype focused on detecting stress-related patterns using lightweight classification techniques.</p>
           </article>
-          <article className="glass card reveal project-card" data-reveal>
-            <div className="emoji">🎬</div>
-            <h3>Video Coding Explorer</h3>
-            <p>Researching efficient compression pipelines and practical approaches for media processing.</p>
-          </article>
         </div>
       </div>
     </section>
