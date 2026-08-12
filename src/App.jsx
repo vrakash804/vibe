@@ -1,5 +1,5 @@
 import "./App.css";
-import PillNav from "./PillNav";
+import PillNav from "./components/PillNav";
 import logo from "../assets/favicon.png";
 
 function App() {
