@@ -1,5 +1,5 @@
-import aiTraffic from '../assets/ai-traffic.svg';
-import stressDetection from '../assets/stress-detection.svg';
+import aiTraffic from '../../assets/ai-traffic.svg';
+import stressDetection from '../../assets/stress-detection.svg';
 
 function Projects() {
   return (

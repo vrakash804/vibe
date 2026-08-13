@@ -10,7 +10,7 @@ function Resume() {
             <div className="underline"></div>
           </div>
           <p>View my resume to see my academic background, skills, and projects in one place.</p>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+          <a href="resume.html" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
             View Resume
           </a>
         </div>

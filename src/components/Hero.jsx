@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import profile from '../assets/profile.svg';
+import profile from '../../assets/profile.svg';
 
 const phrases = ['AI/ML Enthusiast', 'Frontend Builder'];
 
@@ -56,15 +56,15 @@ function Hero() {
             <a href="#projects" className="btn btn-primary">
               Explore Projects
             </a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn">
+            <a href="resume.html" target="_blank" rel="noopener noreferrer" className="btn">
               View Resume
             </a>
           </div>
           <div className="social-row">
-            <a href="https://github.com" target="_blank" rel="noreferrer" className="social-pill">
+            <a href="https://github.com/vrakash804" target="_blank" rel="noreferrer" className="social-pill">
               GitHub
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="social-pill">
+            <a href="https://www.linkedin.com/in/akash-v-r-aiml/" target="_blank" rel="noreferrer" className="social-pill">
               LinkedIn
             </a>
           </div>

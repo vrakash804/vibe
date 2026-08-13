@@ -1,6 +1,6 @@
 # Portfolio Site
 
-A polished one-page portfolio website for an AI/ML and video coding enthusiast built with HTML, CSS, and JavaScript.
+A polished one-page portfolio website for an AI/ML enthusiast and Full Stack developer built with React, Vite, HTML, CSS, and JavaScript.
 
 ## Structure
 - index.html — page content and sections

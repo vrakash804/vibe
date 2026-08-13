@@ -4,13 +4,15 @@ const navbar = document.getElementById('navbar');
 const loadingScreen = document.getElementById('loadingScreen');
 const typedText = document.getElementById('typedText');
 const reveals = document.querySelectorAll('.reveal');
+const pillItems = document.querySelectorAll('.pill-item');
 
-const phrases = ['AI/ML Enthusiast', 'Video Coding Explorer', 'Frontend Builder'];
+const phrases = ['AI/ML Enthusiast', 'Frontend Builder'];
 let phraseIndex = 0;
 let charIndex = 0;
 let deleting = false;
 
 const typeLoop = () => {
+    if (!typedText) return;
     const current = phrases[phraseIndex];
     typedText.textContent = deleting
         ? current.slice(0, charIndex--)
@@ -29,7 +31,25 @@ const typeLoop = () => {
 };
 
 const updateNavbar = () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 40);
+    if (navbar) {
+        navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }
+
+    // Highlight active section in Pill Nav
+    const sections = document.querySelectorAll('section[id]');
+    let currentSectionId = 'home';
+    sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        const height = section.offsetHeight;
+        if (window.scrollY >= top && window.scrollY < top + height) {
+            currentSectionId = section.getAttribute('id');
+        }
+    });
+
+    pillItems.forEach(item => {
+        const href = item.getAttribute('href');
+        item.classList.toggle('active', href === `#${currentSectionId}`);
+    });
 };
 
 const revealOnScroll = () => {
@@ -42,6 +62,39 @@ const revealOnScroll = () => {
     });
 };
 
+// Scroll Velocity ticker implementation for static HTML
+const initScrollVelocity = () => {
+    const track = document.getElementById('scrollVelocityTrack');
+    if (!track) return;
+
+    let lastScrollY = window.scrollY;
+    let currentX = 0;
+    let scrollVelocity = 0;
+    const baseVelocity = 1.6;
+
+    window.addEventListener('scroll', () => {
+        const dy = window.scrollY - lastScrollY;
+        lastScrollY = window.scrollY;
+        scrollVelocity = dy * 0.15;
+    }, { passive: true });
+
+    const animateVelocity = () => {
+        scrollVelocity *= 0.92;
+        const velocity = baseVelocity + (scrollVelocity > 0 ? Math.min(scrollVelocity, 10) : Math.max(scrollVelocity, -10));
+        currentX -= velocity;
+
+        const halfWidth = track.scrollWidth / 2;
+        if (Math.abs(currentX) >= halfWidth) {
+            currentX = 0;
+        }
+        track.style.transform = `translate3d(${currentX}px, 0, 0)`;
+
+        requestAnimationFrame(animateVelocity);
+    };
+
+    requestAnimationFrame(animateVelocity);
+};
+
 window.addEventListener('scroll', () => {
     updateNavbar();
     revealOnScroll();
@@ -51,7 +104,10 @@ window.addEventListener('load', () => {
     updateNavbar();
     revealOnScroll();
     initCertificateSlider();
-    setTimeout(() => loadingScreen.classList.add('hidden'), 700);
+    initScrollVelocity();
+    setTimeout(() => {
+        if (loadingScreen) loadingScreen.classList.add('hidden');
+    }, 700);
     typeLoop();
 });
 
@@ -69,39 +125,33 @@ const initCertificateSlider = () => {
 
     const updateSlider = () => {
         items.forEach((item, index) => {
-            // Compute position relative to current active index
             const offset = (index - currentIndex + total) % total;
             
             if (offset === 0) {
-                // Front active card
                 item.style.transform = 'translate3d(0, 0px, 0px) scale(1)';
                 item.style.opacity = '1';
                 item.style.zIndex = '5';
                 item.style.pointerEvents = 'auto';
                 item.classList.add('active-item');
             } else if (offset === 1) {
-                // 2nd card in 3D stack
                 item.style.transform = 'translate3d(0, 22px, -35px) scale(0.93)';
                 item.style.opacity = '0.85';
                 item.style.zIndex = '4';
                 item.style.pointerEvents = 'auto';
                 item.classList.remove('active-item');
             } else if (offset === 2) {
-                // 3rd card in 3D stack
                 item.style.transform = 'translate3d(0, 44px, -70px) scale(0.86)';
                 item.style.opacity = '0.65';
                 item.style.zIndex = '3';
                 item.style.pointerEvents = 'auto';
                 item.classList.remove('active-item');
             } else if (offset === 3) {
-                // 4th card in 3D stack
                 item.style.transform = 'translate3d(0, 66px, -105px) scale(0.79)';
                 item.style.opacity = '0.45';
                 item.style.zIndex = '2';
                 item.style.pointerEvents = 'none';
                 item.classList.remove('active-item');
             } else {
-                // 5th card in 3D stack
                 item.style.transform = 'translate3d(0, 88px, -140px) scale(0.72)';
                 item.style.opacity = '0.2';
                 item.style.zIndex = '1';
@@ -144,7 +194,6 @@ const initCertificateSlider = () => {
         });
     });
 
-    // Touch gesture support
     let startX = 0;
     slider.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
@@ -171,4 +220,3 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
-

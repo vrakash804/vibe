@@ -19,13 +19,13 @@ function Contact() {
             </button>
           </form>
           <div className="social-row contact-social">
-            <a href="https://github.com" target="_blank" rel="noreferrer">
+            <a href="https://github.com/vrakash804" target="_blank" rel="noreferrer">
               GitHub
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/akash-v-r-aiml/" target="_blank" rel="noreferrer">
               LinkedIn
             </a>
-            <a href="mailto:akash@example.com">Email</a>
+            <a href="mailto:vrakash804@gmail.com">Email</a>
           </div>
         </div>
       </div>
