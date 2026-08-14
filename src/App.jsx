@@ -1,7 +1,6 @@
 import "./App.css";
 import PillNav from "./components/PillNav";
 import Hero from "./components/Hero";
-import ScrollVelocity from "./components/ScrollVelocity";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Education from "./components/Education";
@@ -31,16 +30,13 @@ function App() {
         activeHref="#home"
         className="custom-nav"
         ease="power2.easeOut"
-        baseColor="#000000"
-        pillColor="#ffffff"
+        baseColor="transparent"
+        pillColor="rgba(255, 255, 255, 0.08)"
         hoveredPillTextColor="#ffffff"
-        pillTextColor="#000000"
+        pillTextColor="#ffffff"
       />
 
       <Hero />
-
-      <ScrollVelocity text="HELLO I AM AKASH V R" baseVelocity={1.8} />
-
       <About />
       <Skills />
       <Education />

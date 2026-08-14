@@ -62,39 +62,6 @@ const revealOnScroll = () => {
     });
 };
 
-// Scroll Velocity ticker implementation for static HTML
-const initScrollVelocity = () => {
-    const track = document.getElementById('scrollVelocityTrack');
-    if (!track) return;
-
-    let lastScrollY = window.scrollY;
-    let currentX = 0;
-    let scrollVelocity = 0;
-    const baseVelocity = 1.6;
-
-    window.addEventListener('scroll', () => {
-        const dy = window.scrollY - lastScrollY;
-        lastScrollY = window.scrollY;
-        scrollVelocity = dy * 0.15;
-    }, { passive: true });
-
-    const animateVelocity = () => {
-        scrollVelocity *= 0.92;
-        const velocity = baseVelocity + (scrollVelocity > 0 ? Math.min(scrollVelocity, 10) : Math.max(scrollVelocity, -10));
-        currentX -= velocity;
-
-        const halfWidth = track.scrollWidth / 2;
-        if (Math.abs(currentX) >= halfWidth) {
-            currentX = 0;
-        }
-        track.style.transform = `translate3d(${currentX}px, 0, 0)`;
-
-        requestAnimationFrame(animateVelocity);
-    };
-
-    requestAnimationFrame(animateVelocity);
-};
-
 window.addEventListener('scroll', () => {
     updateNavbar();
     revealOnScroll();
@@ -104,7 +71,6 @@ window.addEventListener('load', () => {
     updateNavbar();
     revealOnScroll();
     initCertificateSlider();
-    initScrollVelocity();
     setTimeout(() => {
         if (loadingScreen) loadingScreen.classList.add('hidden');
     }, 700);
